@@ -1,0 +1,40 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package miniserver;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Utente
+ */
+public class MiniServer extends Thread {
+
+    ServerSocket server;
+    int porta = 6000;
+
+    public MiniServer() throws IOException {
+        server = new ServerSocket(porta);
+        System.out.println("Il server è in attesa sulla porta: " + porta);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("In attesa di connessione sulla porta: " + porta);
+        try {
+            server.accept();
+        } catch (IOException ex) {
+            Logger.getLogger(MiniServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String argv[]) throws IOException {
+        MiniServer server = new MiniServer();
+        server.start();
+    }
+}

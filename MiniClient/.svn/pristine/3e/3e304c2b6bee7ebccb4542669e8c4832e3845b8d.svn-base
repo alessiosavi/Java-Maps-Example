@@ -1,0 +1,30 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package miniclient;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Utente
+ */
+public class Mappa extends JPanel {
+
+    Image immagine;
+
+    public Mappa() {
+        immagine = Toolkit.getDefaultToolkit().createImage("C:/Users/utente/Documents/5°IA/Sistemi/Mappa/MiniServer/src/miniserver/standoff.jpg");
+        System.out.println("IMMAGINE CARICATA");
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawImage(immagine, 0, 0, getWidth(), getHeight(), this);
+        System.out.println("STAMPA");
+    }
+}
